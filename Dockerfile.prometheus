@@ -1,4 +1,4 @@
-ARG IMAGE
+ARG IMAGE="quay.io/web-servers/tomcat10"
 FROM ${IMAGE}
 LABEL Description="Tomcat image to use with the JWS operator"
 VOLUME /tmp
@@ -10,7 +10,7 @@ ADD start.sh /opt
 ADD usekube.sh /opt
 ADD usedns.sh /opt
 
-RUN mkdir /opt/prometheus && wget https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.17.2/jmx_prometheus_javaagent-0.17.2.jar -O /opt/prometheus/prometheus.jar && wget https://raw.githubusercontent.com/prometheus/jmx_exporter/master/example_configs/tomcat.yml -O conf/prometheus.yaml
+RUN mkdir /opt/prometheus && wget https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/1.0.1/jmx_prometheus_javaagent-1.0.1.jar -O /opt/prometheus/prometheus.jar && wget https://raw.githubusercontent.com/prometheus/jmx_exporter/refs/heads/main/examples/tomcat.yml -O conf/prometheus.yaml
 
 ARG prometheusport=9404
 
