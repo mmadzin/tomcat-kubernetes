@@ -17,6 +17,7 @@ RUN chmod a+w /etc/subuid
 RUN chmod a+w /etc/subgid
 
 ADD build.sh /usr/bin/build.sh
+RUN chmod +x /usr/bin/build.sh
 ADD redhat_jws_download.py /usr/bin/redhat_jws_download.py
 ADD Dockerfile.JWS /
 
